@@ -13,8 +13,8 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
-#graph-id-graph-wrapper,
-#graph-id-graph-wrapper > svg {
+#chart-graph-wrapper,
+#chart-graph-wrapper > svg {
   width: 100% !important;
   height: 100% !important;
 }

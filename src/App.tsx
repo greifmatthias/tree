@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Chart } from 'components';
+import { AddModal, Chart } from 'components';
 
 export const App = () => {
   return (
     <>
+      <AddModal />
       <Chart />
     </>
   );
