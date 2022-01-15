@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Graph } from 'react-d3-graph';
 
 import { config } from './Chart.config';

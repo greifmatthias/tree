@@ -3,4 +3,8 @@ export const useQueryParams = (): Record<string, string> =>
     .replace('?', '')
     .split('&')
     .map(e => e.split('=').map(decodeURIComponent))
-    .reduce((r: any, [k, v]) => ((r[k] = v), r), {});
+    .reduce((r: any, [k, v]) => {
+      r[k] = v;
+
+      return r;
+    }, {});
