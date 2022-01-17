@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useEffect } from 'react';
+import React, { useContext, createContext, useState, useEffect, FC } from 'react';
 
 import { useQueryParams } from 'hooks';
 import { RoomService } from 'services';
@@ -8,7 +8,7 @@ import { AppContextInterface } from './AppContext.types';
 
 export const AppContext = createContext<AppContextInterface>({});
 
-export const AppProvider = ({ children }: any) => {
+export const AppProvider: FC = ({ children }) => {
   const roomService = new RoomService();
 
   const [room, setRoom] = useState<Room | undefined>();

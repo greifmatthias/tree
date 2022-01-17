@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { DocumentSnapshot, SnapshotOptions } from '@firebase/firestore';
 
 import { Room, Connection } from 'types';
 
 export const roomConverter = {
   // TODO?
-  toFirestore: (data: Room) => {
+  toFirestore: (_: Room) => {
     return {};
   },
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Room => {
@@ -19,7 +20,7 @@ export const roomConverter = {
 
 export const connectionConverter = {
   // TODO?
-  toFirestore: (data: Connection) => {
+  toFirestore: (_: Connection) => {
     return {};
   },
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Connection => {

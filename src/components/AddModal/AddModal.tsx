@@ -11,12 +11,11 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
 
   const roomService = new RoomService();
 
-  const firstRef: any = useRef();
-  const secondRef: any = useRef();
+  const firstRef = useRef<HTMLInputElement>(null);
+  const secondRef = useRef<HTMLInputElement>(null);
 
   const onAddClick = async () => {
-    console.log(room);
-    if (room) {
+    if (room && !!firstRef.current?.value && !!secondRef.current?.value) {
       await roomService.createConnection(room.id, firstRef.current.value, secondRef.current.value);
 
       if (onClose) onClose();

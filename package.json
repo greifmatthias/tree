@@ -21,12 +21,8 @@
     "start": "craco start",
     "build": "craco build",
     "update": "npx npm-check-updates -u && npm i --legacy-peer-deps",
-    "deploy": "npm run build && npx firebase deploy"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "deploy": "npm run build && npx firebase deploy",
+    "lint": "eslint src/**/*.ts src/**/*.tsx"
   },
   "browserslist": {
     "production": [
@@ -45,6 +41,8 @@
     "@craco/craco": "6.4.3",
     "@jackwilsdon/craco-use-babelrc": "1.0.0",
     "@types/react-d3-graph": "2.6.3",
+    "@typescript-eslint/eslint-plugin": "5.10.0",
+    "@typescript-eslint/parser": "5.10.0",
     "eslint": "8.6.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-typescript": "2.5.0",

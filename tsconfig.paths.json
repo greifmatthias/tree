@@ -4,7 +4,11 @@
     "paths": {
       "components": ["./components"],
       "context": ["./context"],
-      "helpers": ["./helpers"]
+      "helpers": ["./helpers"],
+      "hooks": ["./hooks"],
+      "pages": ["./pages"],
+      "services": ["./services"],
+      "types": ["./types"]
     }
   }
 }
