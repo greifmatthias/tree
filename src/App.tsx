@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import { AddModal, Chart } from 'components';
+import { AppProvider } from 'context';
+import { HomePage } from 'pages';
 
-export const App = () => {
+export const App: FC = () => {
   return (
-    <>
-      <AddModal />
-      <Chart />
-    </>
+    <AppProvider>
+      <HomePage />
+    </AppProvider>
   );
 };

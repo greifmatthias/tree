@@ -4,12 +4,18 @@ const Root = styled('div')({
   width: '100%',
   height: '100%',
   position: 'fixed',
-  backgroundColor: 'rgba(0,0,0,0.5)',
   zIndex: 999,
-  backdropFilter: 'blur(5px)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+});
+
+const Background = styled('div')({
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
+  backgroundColor: 'rgba(0,0,0,0.5)',
+  backdropFilter: 'blur(5px)',
 });
 
 const Modal = styled('div')({
@@ -21,6 +27,8 @@ const Modal = styled('div')({
   paddingBottom: 16,
   display: 'flex',
   flexDirection: 'column',
+  zIndex: 998,
+  position: 'relative',
 });
 
 const TitleText = styled('h1')({
@@ -55,6 +63,8 @@ const SubmitButton = styled('button')({
 
 export default {
   Root,
+
+  Background,
 
   Modal,
 

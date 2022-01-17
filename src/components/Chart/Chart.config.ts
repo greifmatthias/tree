@@ -16,8 +16,8 @@ export const config = {
   staticGraphWithDragAndDrop: false,
   d3: {
     alphaTarget: 0.05,
-    gravity: -250,
-    linkLength: 120,
+    gravity: -100,
+    linkLength: 60,
     linkStrength: 2,
     disableLinkForce: false,
   },

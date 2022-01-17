@@ -1,4 +1,4 @@
-import { collection, Firestore, query, where, getDocs } from '@firebase/firestore';
+import { collection, Firestore, query, where, getDocs, addDoc } from '@firebase/firestore';
 
 import { Connection, Room } from 'types';
 
@@ -35,5 +35,17 @@ export class RoomService {
     const snapshot = await getDocs(q);
 
     return snapshot.docs.map(x => x.data());
+  };
+
+  //   Create new Connection
+  createConnection = async (roomId: string, first: string, second: string): Promise<void> => {
+    console.log(roomId, first, second);
+
+    await addDoc(collection(this.db, DB_NAMES.connections), {
+      room: roomId,
+      first,
+      second,
+      date: new Date(),
+    });
   };
 }
