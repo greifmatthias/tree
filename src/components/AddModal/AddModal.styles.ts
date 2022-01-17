@@ -19,12 +19,15 @@ const Background = styled('div')({
 });
 
 const Modal = styled('div')({
-  minWidth: 360,
+  width: 'calc(100% - 96px)',
+  maxWidth: 360,
   backgroundColor: '#FFFFFF',
   borderRadius: 12,
   paddingLeft: 24,
   paddingRight: 24,
   paddingBottom: 16,
+  marginLeft: 24,
+  marginRight: 24,
   display: 'flex',
   flexDirection: 'column',
   zIndex: 998,
