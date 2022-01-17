@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo $FIREBASE_SECRETS | base64 -d > src/config/firebase.ts
+        env:
+          FIREBASE_SECRETS: ${{ secrets.FIREBASE_SECRETS }}
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
