@@ -6,6 +6,7 @@ import { RoomService } from 'services';
 import { AddModalProps } from './AddModal.types';
 import S from './AddModal.styles';
 import { ConnectionType } from 'types';
+import { connectionTypeConverter } from 'services/Helpers';
 
 export const AddModal: FC<AddModalProps> = ({ onClose }) => {
   const { room } = useAppContext();
@@ -25,20 +26,6 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
     }
   };
 
-  //TODO: move to some kind of converter service?
-  const getColorForConnectionType = (type: ConnectionType): string => {
-    switch (type) {
-      case ConnectionType.Muiltje: 
-        return 'Muiltje';
-      case ConnectionType.Voorspel:
-        return 'Bitje vingeren oke maar pik er in how maar';
-      case ConnectionType.Batsen:
-        return 'De liefde bedreven';
-      default: 
-        return 'black';
-    }
-  };
-
   return (
     <S.Root>
       <S.Background onClick={onClose} />
@@ -53,7 +40,7 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
         <S.TextInputLabel>Connection Type</S.TextInputLabel>
         <S.Select ref={typeRef}>
           {
-            Object.values(ConnectionType).filter(x => !isNaN(Number(x))).map(x => <option value={x} key={x}> {getColorForConnectionType(x as ConnectionType)} </option>)
+            Object.values(ConnectionType).filter(x => !isNaN(Number(x))).map(x => <option value={x} key={x}> {connectionTypeConverter.toDescription(x as ConnectionType)} </option>)
           }
           </S.Select>
 
