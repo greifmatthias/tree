@@ -1,6 +1,6 @@
 import { collection, Firestore, query, where, getDocs, addDoc } from '@firebase/firestore';
 
-import { Connection, Room } from 'types';
+import { Connection, ConnectionType, Room } from 'types';
 
 import { firebaseService } from '../Firebase.service';
 import { connectionConverter, roomConverter } from './Room.helpers';
@@ -38,13 +38,14 @@ export class RoomService {
   };
 
   //   Create new Connection
-  createConnection = async (roomId: string, first: string, second: string): Promise<void> => {
-    console.log(roomId, first, second);
-
+  createConnection = async (roomId: string, first: string, second: string, type: ConnectionType): Promise<void> => {
+    //TODO: check if connection exists
+    
     await addDoc(collection(this.db, DB_NAMES.connections), {
       room: roomId,
       first,
       second,
+      type,
       date: new Date(),
     });
   };
