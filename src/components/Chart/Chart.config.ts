@@ -45,7 +45,7 @@ export const config = {
     fontColor: 'black',
     fontSize: 8,
     fontWeight: 'normal',
-    highlightColor: '#2962FF',
+    highlightColor: 'default',
     highlightFontSize: 8,
     highlightFontWeight: 'normal',
     mouseCursor: 'pointer',

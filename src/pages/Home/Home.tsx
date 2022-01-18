@@ -7,6 +7,7 @@ import { Connection, ConnectionType } from 'types';
 
 import { HomePageProps } from './Home.types';
 import S from './Home.styles';
+import { connectionTypeConverter } from 'services/Helpers';
 
 export const HomePage: FC<HomePageProps> = () => {
   const { room } = useAppContext();
@@ -20,23 +21,9 @@ export const HomePage: FC<HomePageProps> = () => {
     if (room) roomService.getConnections(room.id).then(setConnections);
   }, [room]);
 
-  //TODO: move to some kind of converter service?
-  const getColorForConnectionType = (type: ConnectionType): string => {
-    switch (type) {
-      case ConnectionType.Muiltje: 
-        return 'rgb(197, 202, 233)';
-      case ConnectionType.Voorspel:
-        return 'lightgreen';
-      case ConnectionType.Batsen:
-        return 'gold';
-      default: 
-        return 'black';
-    }
-  };
-
   const { nodes, links } = useMemo(() => {
     const n = connections.reduce((prev: Array<{ id: string }>, curr) => prev.concat([{ id: curr.first }, { id: curr.second }]), []);
-    const l = connections.map(({ first, second, type }) => ({ source: first, target: second, color: getColorForConnectionType(type ?? ConnectionType.Muiltje) }));
+    const l = connections.map(({ first, second, type }) => ({ source: first, target: second, color: connectionTypeConverter.toColor(type ?? 0) }));
 
     return { nodes: n, links: l };
   }, [connections]);
@@ -50,6 +37,8 @@ export const HomePage: FC<HomePageProps> = () => {
       <S.AddButton onClick={() => openModal(true)}>
         <Icon name="plus" />
       </S.AddButton>
+
+      <S.LinkTypesLegend></S.LinkTypesLegend>
     </>
   );
 };

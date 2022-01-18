@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { IconButton } from 'components';
+import { IconButton, ColorLegend } from 'components';
 
 const AddButton = styled(IconButton)({
   position: 'absolute',
@@ -8,6 +8,13 @@ const AddButton = styled(IconButton)({
   right: 24,
 });
 
+const LinkTypesLegend = styled(ColorLegend)({
+  position: 'absolute',
+  top: 24,
+  left: 24,
+});
+
 export default {
   AddButton,
+  LinkTypesLegend
 };
