@@ -5,7 +5,7 @@ export const config = {
   focusAnimationDuration: 0.75,
   focusZoom: 1,
   freezeAllDragEvents: false,
-  highlightDegree: 2,
+  highlightDegree: 1,
   highlightOpacity: 0.2,
   linkHighlightBehavior: true,
   maxZoom: 12,
