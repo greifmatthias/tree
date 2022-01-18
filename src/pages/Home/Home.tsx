@@ -3,11 +3,10 @@ import React, { FC, useEffect, useMemo, useState } from 'react';
 import { AddModal, Chart, Icon } from 'components';
 import { useAppContext } from 'context';
 import { RoomService } from 'services';
-import { Connection, ConnectionType } from 'types';
+import { Connection } from 'types';
 
 import { HomePageProps } from './Home.types';
 import S from './Home.styles';
-import { connectionTypeConverter } from 'services/Helpers';
 
 export const HomePage: FC<HomePageProps> = () => {
   const { room } = useAppContext();
@@ -23,7 +22,11 @@ export const HomePage: FC<HomePageProps> = () => {
 
   const { nodes, links } = useMemo(() => {
     const n = connections.reduce((prev: Array<{ id: string }>, curr) => prev.concat([{ id: curr.first }, { id: curr.second }]), []);
-    const l = connections.map(({ first, second, type }) => ({ source: first, target: second, color: connectionTypeConverter.toColor(type ?? 0) }));
+    const l = connections.map(({ first, second, type }) => ({
+      source: first,
+      target: second,
+      color: room?.connectiontypes[type]?.color || '#000000',
+    }));
 
     return { nodes: n, links: l };
   }, [connections]);

@@ -1,19 +1,24 @@
 import React, { FC } from 'react';
-import { connectionTypeConverter } from 'services/Helpers';
-import { ConnectionType } from 'types';
+
+import { useAppContext } from 'context';
 
 import S from './ColorLegend.styles';
 
-export const ColorLegend: FC = props => (
-  <S.Root {...props}>
-    <S.Title>Color Legend</S.Title>
-    {Object.values(ConnectionType)
-      .filter(x => !isNaN(Number(x)))
-      .map(x => (
-        <S.Entry key={x}>
-          <S.ColorBlock bgColor={connectionTypeConverter.toColor(x as ConnectionType)} />
-          <S.Description> {connectionTypeConverter.toDescription(x as ConnectionType)} </S.Description>
-        </S.Entry>
+export const ColorLegend: FC = props => {
+  const { room } = useAppContext();
+
+  if (!room) return null;
+
+  return (
+    <S.Root {...props}>
+      <S.TitleText>Color Legend</S.TitleText>
+
+      {room.connectiontypes.map(({ color, name }) => (
+        <S.EntryContainer key={name}>
+          <S.ColorIndicator color={color || '#000000'} />
+          <S.DescriptionText>{name}</S.DescriptionText>
+        </S.EntryContainer>
       ))}
-  </S.Root>
-);
+    </S.Root>
+  );
+};

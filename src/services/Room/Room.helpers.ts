@@ -5,9 +5,7 @@ import { Room, Connection } from 'types';
 
 export const roomConverter = {
   // TODO?
-  toFirestore: (_: Room) => {
-    return {};
-  },
+  toFirestore: (_: Room) => ({}),
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Room => {
     const data = snapshot.data(options);
 
@@ -20,14 +18,13 @@ export const roomConverter = {
 
 export const connectionConverter = {
   // TODO?
-  toFirestore: (_: Connection) => {
-    return {};
-  },
+  toFirestore: (_: Connection) => ({}),
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Connection => {
     const data = snapshot.data(options);
 
     return {
       id: snapshot.id,
+      type: 0,
       ...data,
     } as Connection;
   },

@@ -1,42 +1,43 @@
 import styled from '@emotion/styled';
 
-const Root = styled.div`
-  padding: 16px;
-  border: 1px solid black;
-  border-radius: 4px;
-`;
+type StyledColorBlock = {
+  color?: string;
+};
 
-export interface StyledContainerProps {
-  topValue?: number;
-}
+const Root = styled.div({
+  padding: 16,
+  border: '1px solid black',
+  borderRadius: 4,
+});
 
+const TitleText = styled.label({});
 
-const Entry = styled.div`
-  padding: 8px;
-  padding-left: 0;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-`;
+const EntryContainer = styled.div({
+  padding: 8,
+  paddingLeft: 0,
+  display: 'flex',
+  flexWrap: 'nowrap',
+  alignItems: 'center',
+  gap: '0.5rem',
+});
 
-const ColorBlock = styled.div<{bgColor: string}>`
-  width: 3rem;
-  height: 0.5rem;
-  border-radius: 4px;
-  background-color: ${props => props.bgColor};
-  margin-right: 0.5rem;
-`;
+const ColorIndicator = styled.div<StyledColorBlock>(({ color }) => ({
+  width: '3rem',
+  height: '0.5rem',
+  borderRadius: 4,
+  backgroundColor: color,
+}));
 
-const Title = styled.label``;
-
-const Description = styled.label`
+const DescriptionText = styled.label`
   font-size: 0.8rem;
 `;
 
 export default {
   Root,
-  Entry,
-  Title,
-  ColorBlock,
-  Description
+
+  TitleText,
+
+  EntryContainer,
+  ColorIndicator,
+  DescriptionText,
 };
