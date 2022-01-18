@@ -64,6 +64,13 @@ const SubmitButton = styled('button')({
   fontWeight: 600,
 });
 
+const Select = styled('select')({
+  border: '1px solid #EFEFEF',
+  padding: '8px 12px',
+  marginBottom: 16,
+  borderRadius: 4,
+});
+
 export default {
   Root,
 
@@ -77,4 +84,6 @@ export default {
   TextInput,
 
   SubmitButton,
+
+  Select
 };
