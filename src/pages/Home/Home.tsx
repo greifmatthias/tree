@@ -1,27 +1,25 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
+import { uniqBy } from 'lodash';
 
 import { AddModal, Chart, Icon } from 'components';
 import { useAppContext } from 'context';
-import { RoomService } from 'services';
-import { Connection } from 'types';
 
 import { HomePageProps } from './Home.types';
 import S from './Home.styles';
 
 export const HomePage: FC<HomePageProps> = () => {
-  const { room } = useAppContext();
-
-  const roomService = new RoomService();
+  const { room, connections } = useAppContext();
 
   const [modalOpened, openModal] = useState<boolean>(() => false);
-  const [connections, setConnections] = useState<Array<Connection>>(() => []);
-
-  useEffect(() => {
-    if (room) roomService.getConnections(room.id).then(setConnections);
-  }, [room]);
 
   const { nodes, links } = useMemo(() => {
-    const n = connections.reduce((prev: Array<{ id: string }>, curr) => prev.concat([{ id: curr.first }, { id: curr.second }]), []);
+    // Aggregate nodes
+    const n = uniqBy(
+      connections.reduce((prev: Array<{ id: string }>, curr) => prev.concat([{ id: curr.first }, { id: curr.second }]), []),
+      'id',
+    );
+
+    // Aggregate links between nodes
     const l = connections.map(({ first, second, type }) => ({
       source: first,
       target: second,

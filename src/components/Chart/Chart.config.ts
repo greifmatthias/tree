@@ -1,6 +1,6 @@
 export const config = {
-  automaticRearrangeAfterDropNode: true,
-  collapsible: true,
+  automaticRearrangeAfterDropNode: false,
+  collapsible: false,
   directed: false,
   focusAnimationDuration: 0.75,
   focusZoom: 1,
