@@ -31,11 +31,7 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
 
   const alreadyExists = useCallback(
     (first: string, second: string) =>
-      !!connections.find(
-        ({ first: f, second: s }) =>
-          (lowerCase(first) === lowerCase(f) && lowerCase(second) === lowerCase(s)) ||
-          (lowerCase(first) === lowerCase(s) && lowerCase(second) === lowerCase(f)),
-      ),
+      !!connections.find(({ first: f, second: s }) => (first === f && second === s) || (first === s && second === f)),
     [connections],
   );
 
