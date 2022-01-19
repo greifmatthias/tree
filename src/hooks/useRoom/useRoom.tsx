@@ -33,13 +33,7 @@ export const useRoom = (slug: string) => {
 
       uConnections = onSnapshot(qConnections, sConnections => {
         sConnections.docChanges().forEach(doc => {
-          if (doc.type === 'added') {
-            console.log('added', doc.doc.data());
-
-            const newConnection = doc.doc.data();
-
-            setConnections(x => [...x, newConnection]);
-          }
+          if (doc.type === 'added') setConnections(x => [...x, doc.doc.data()]);
         });
       });
     });
