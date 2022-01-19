@@ -16,9 +16,9 @@ export const config = {
   staticGraphWithDragAndDrop: false,
   d3: {
     alphaTarget: 0.05,
-    gravity: -100,
-    linkLength: 60,
-    linkStrength: 2,
+    gravity: -400,
+    linkLength: 100,
+    linkStrength: 1,
     disableLinkForce: false,
   },
   node: {
@@ -52,7 +52,7 @@ export const config = {
     opacity: 1,
     renderLabel: false,
     semanticStrokeWidth: true,
-    strokeWidth: 3,
+    strokeWidth: 2,
     markerHeight: 6,
     markerWidth: 6,
     strokeDasharray: 0,

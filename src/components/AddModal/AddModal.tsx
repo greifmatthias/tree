@@ -19,19 +19,22 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
   const onAddClick = async () => {
     if (room && !!firstRef.current?.value && !!secondRef.current?.value && typeRef.current?.value) {
       const first = lowerCase(firstRef.current.value);
-      const second = lowerCase(firstRef.current.value);
+      const second = lowerCase(secondRef.current.value);
 
-      if (!alreadyExists(first, second)) await roomService.createConnection(room?.id, first, second, +typeRef.current.value);
+      if (!alreadyExists(first, second)) {
+        await roomService.createConnection(room?.id, first, second, +typeRef.current.value);
 
-      if (onClose) onClose();
+        if (onClose) onClose();
+      }
     }
   };
 
   const alreadyExists = useCallback(
     (first: string, second: string) =>
-      connections.find(
+      !!connections.find(
         ({ first: f, second: s }) =>
-          (lowerCase(first) === f && lowerCase(second) === s) || (lowerCase(first) === s && lowerCase(second) === f),
+          (lowerCase(first) === lowerCase(f) && lowerCase(second) === lowerCase(s)) ||
+          (lowerCase(first) === lowerCase(s) && lowerCase(second) === lowerCase(f)),
       ),
     [connections],
   );
