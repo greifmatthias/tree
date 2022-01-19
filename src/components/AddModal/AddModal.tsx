@@ -17,8 +17,7 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
 
   const onAddClick = async () => {
     if (room && !!firstRef.current?.value && !!secondRef.current?.value && typeRef.current?.value) {
-      await roomService.createConnection(room.id, firstRef.current.value, secondRef.current.value, +typeRef.current.value);
-      //TODO: @Matthias reload connections :(
+      await roomService.createConnection(room?.id, firstRef.current.value, secondRef.current.value, +typeRef.current.value);
 
       if (onClose) onClose();
     }
@@ -37,7 +36,7 @@ export const AddModal: FC<AddModalProps> = ({ onClose }) => {
         <S.TextInput ref={secondRef} placeholder="..." />
 
         <S.TextInputLabel>Connection Type</S.TextInputLabel>
-        {!!room?.connectiontypes && (
+        {room?.connectiontypes && (
           <S.Select ref={typeRef}>
             {room?.connectiontypes.map(({ name }, index) => (
               <option value={index} key={name}>
