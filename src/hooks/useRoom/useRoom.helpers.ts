@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { DocumentSnapshot, SnapshotOptions } from '@firebase/firestore';
+import { upperFirst } from 'lodash';
 
 import { Room, Connection } from 'types';
 
@@ -23,9 +24,11 @@ export const connectionConverter = {
     const data = snapshot.data(options);
 
     return {
-      id: snapshot.id,
       type: 0,
       ...data,
+      id: snapshot.id,
+      first: upperFirst(data?.first),
+      second: upperFirst(data?.second),
     } as Connection;
   },
 };

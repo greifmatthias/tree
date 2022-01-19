@@ -1,4 +1,5 @@
 import { collection, Firestore, addDoc } from '@firebase/firestore';
+import { lowerCase } from 'lodash';
 
 import { firebaseService } from '../Firebase.service';
 
@@ -18,8 +19,8 @@ export class RoomService {
   createConnection = async (roomId: string, first: string, second: string, type: number): Promise<void> => {
     await addDoc(collection(this.db, DB_NAMES.connections), {
       room: roomId,
-      first,
-      second,
+      first: lowerCase(first),
+      second: lowerCase(second),
       type,
       date: new Date(),
     });
