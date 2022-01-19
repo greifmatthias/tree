@@ -41,7 +41,7 @@ export const config = {
     strokeWidth: 1.5,
     svg: '',
     symbolType: 'circle',
-    labelProperty: ({ id }: any) => upperCase(id),
+    labelProperty: ({ id }: { id: string }) => upperCase(id),
   },
   link: {
     color: '#C5CAE9',
