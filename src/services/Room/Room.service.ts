@@ -1,5 +1,6 @@
-import { collection, Firestore, addDoc } from '@firebase/firestore';
+import { collection, Firestore, addDoc, updateDoc, doc } from '@firebase/firestore';
 import { lowerCase } from 'lodash';
+import { Connection } from 'types';
 
 import { firebaseService } from '../Firebase.service';
 
@@ -23,6 +24,15 @@ export class RoomService {
       second: lowerCase(second),
       type,
       date: new Date(),
+    });
+  };
+
+  //   Update existing Connection
+  updateConnection = async (connection: Connection, type: number): Promise<void> => {
+    updateDoc(doc(this.db, DB_NAMES.connections, connection.id ), {
+      ...connection,
+      type,
+      date: new Date()
     });
   };
 }
