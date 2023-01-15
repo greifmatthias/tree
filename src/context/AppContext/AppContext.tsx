@@ -8,7 +8,7 @@ export const AppContext = createContext<AppContextInterface>({
   connections: [],
 });
 
-export const AppProvider: FC = ({ children }) => {
+export const AppProvider: FC<any> = ({ children }) => {
   const { room: roomSlug } = useQueryParams();
   const { room, connections } = useRoom(roomSlug);
 
